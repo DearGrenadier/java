@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<authors>
+	<author authorId="120851" letter="T"> 
+		<name>Mark</name> 
+		<surname>Twain</surname> 
+		<country>USA</country>
+		<birthDate>1835</birthDate>
+ 		<book bookId="1123">
+ 			<title>
+ 				The Adventures of Tom Sawyer
+ 			</title>
+ 			<pages>
+ 				800
+ 			</pages>
+ 			<releaseDate>
+ 				1876
+ 			</releaseDate>
+ 		</book>
+	</author>
+	<author authorId="134231" letter="P"> 
+		<name>Alexander</name> 
+		<surname>Pushkin</surname> 
+		<country>Russia</country>
+		<birthDate>1799</birthDate>
+ 		<book bookId="123">
+ 			<title>
+ 				Evgeny Onegin
+ 			</title>
+ 			<pages>
+ 				800
+ 			</pages>
+ 			<releaseDate>
+ 				1825
+ 			</releaseDate>
+ 		</book>
+	</author>
+	<author authorId="12314" letter="L"> 
+		<name>Ura</name> 
+		<surname>Lermontov</surname> 
+		<country>Russia</country>
+		<birthDate>1802</birthDate>
+ 		<book bookId="12214">
+ 			<title>
+ 				Mcyri
+ 			</title>
+ 			<pages>
+ 				500
+ 			</pages>
+ 			<releaseDate>
+ 				1836
+ 			</releaseDate>
+ 		</book>
+	</author>			
+</authors>
