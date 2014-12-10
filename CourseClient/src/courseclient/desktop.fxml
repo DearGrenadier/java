@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="815.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="courseclient.DesktopController">
+    <children>
+        <HBox layoutX="17.0" layoutY="23.0">
+            <children>
+                <Button fx:id="add" focusTraversable="false" layoutX="37.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#add" text="Добавить">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="delete" focusTraversable="false" layoutX="99.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#delete" text="Удалить">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="edit" focusTraversable="false" layoutX="162.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#edit" text="Редактировать">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="view" focusTraversable="false" layoutX="223.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#view" text="Просмотр">
+                    <HBox.margin>
+                        <Insets right="5.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+        <TableView fx:id="projectsTable" focusTraversable="false" layoutX="17.0" layoutY="65.0" prefHeight="500.0" prefWidth="781.0">
+            <columns>
+                <TableColumn prefWidth="140.0" text="Название">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Менеджеры">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="manager" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Исполнители">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="performers" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="130.0" text="Дата начала">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="startDate" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Дата завершения">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="endDate" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="60.0" text="\%">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="percent" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                
+                </FXCollections>
+            </items>
+        </TableView>
+        <HBox layoutX="17.0" layoutY="588.0">
+            <children>
+                <TextField fx:id="name" alignment="CENTER" focusTraversable="false" layoutX="14.0" layoutY="588.0" prefHeight="34.0" prefWidth="119.0" promptText="Название" />
+                <TextField fx:id="manager" alignment="CENTER" focusTraversable="false" layoutX="131.0" layoutY="588.0" prefHeight="34.0" prefWidth="119.0" promptText="Менеджер" />
+            <TextField fx:id="performers" focusTraversable="false" prefHeight="34.0" prefWidth="119.0" promptText="Исполнитель" />
+                <DatePicker fx:id="startDate" focusTraversable="false" layoutX="403.0" layoutY="586.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="155.0" promptText="Дата начала" />
+                <DatePicker fx:id="endDate" focusTraversable="false" layoutX="557.0" layoutY="586.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="34.0" prefWidth="167.0" promptText="Дата завершения" />
+            </children>
+        </HBox>
+      <Button fx:id="search" layoutX="696.0" layoutY="588.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="34.0" prefWidth="101.0" text="Искать" />
+      <Text fx:id="userName" layoutX="639.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="107.3642578125" />
+      <Text fx:id="role" layoutX="639.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="101.0" />
+    </children>
+</AnchorPane>
