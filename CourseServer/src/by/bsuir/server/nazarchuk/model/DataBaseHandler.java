@@ -1,12 +1,11 @@
-package courseserver;
+package by.bsuir.server.nazarchuk.model;
 
+import by.bsuir.server.nazarchuk.model.DataBaseConnector;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -135,6 +134,7 @@ public class DataBaseHandler {
         }
         return flag;
     }
+    
 
     public boolean getMangersWithoutUser(PreparedStatement ps, String login,
             JSONArray managers) {
@@ -242,7 +242,7 @@ public class DataBaseHandler {
             rs.next();
             return rs.getInt("id");
         } catch (SQLException ex) {
-            System.out.println("SQLException : " + ex);
+            System.err.println("SQLException : " + ex);
         }
         return 0;
     }
@@ -273,5 +273,175 @@ public class DataBaseHandler {
             System.err.println("Execute query error:" + e);
         }
         return flag;
+    }
+
+    public boolean updateProject(PreparedStatement ps, String name, String startDate,
+            String endDate, int percent, int id) {
+        boolean flag = false;
+        try {
+            ps.setString(1, name);
+            ps.setString(2, startDate);
+            ps.setString(3, endDate);
+            ps.setInt(4, percent);
+            ps.setInt(5, id);
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException e) {
+            System.err.println("Execute query error:" + e);
+        }
+        return flag;
+    }
+
+    public boolean dropAllProjectManagers(PreparedStatement ps, int id) {
+        boolean flag = false;
+        try {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException e) {
+            System.err.println("Execute query error:" + e);
+        }
+        return flag;
+    }
+
+    public boolean dropAllProjectPerformers(PreparedStatement ps, int id) {
+        boolean flag = false;
+        try {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException e) {
+            System.err.println("Execute query error:" + e);
+        }
+        return flag;
+    }
+
+    public boolean selectByName(PreparedStatement ps, String name, List<Integer> tmpArray) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            ps.setString(1, name);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tmpArray.add(rs.getInt("id"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+    
+    public boolean selectByStartDate(PreparedStatement ps, String startDate,
+            List<Integer> tmpArray) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            ps.setString(1, startDate);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tmpArray.add(rs.getInt("id"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+    
+    public boolean selectByEndDate(PreparedStatement ps, String endDate,
+            List<Integer> tmpArray) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            ps.setString(1, endDate);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tmpArray.add(rs.getInt("id"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+
+    public boolean selectByManagerId(PreparedStatement ps, int managerId, List<Integer> tmpArray) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            ps.setInt(1, managerId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tmpArray.add(rs.getInt("projectId"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+    
+    public boolean selectByPerformerId(PreparedStatement ps, int performerId,
+            List<Integer> tmpArray) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            ps.setInt(1, performerId);
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                tmpArray.add(rs.getInt("projectId"));
+                flag = true;
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+    
+    public boolean selectAllUsersWithoutAdmin(PreparedStatement ps,
+            JSONArray usersWithoutAdmin) {
+        boolean flag = false;
+        ResultSet rs = null;
+        try {
+            rs = ps.executeQuery();
+            while(rs.next()) {
+                JSONObject user = new JSONObject();
+                user.put("id", rs.getInt("id"));
+                user.put("login", rs.getString("login"));
+                user.put("role", rs.getString("role"));
+                usersWithoutAdmin.add(user);
+                flag = true;
+            }
+        } catch (SQLException ex) {
+            System.err.println("SQLException : " + ex);
+        }
+        return flag;
+    }
+
+    public boolean deleteUserById(PreparedStatement ps, int id) {
+        boolean flag = false;
+        try {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            System.err.println("Execute update error from method"
+                    + " DataBaseHandler::deleteUserById : " + ex);
+        }
+        return flag;
+    }
+
+    public boolean insertIntoUsers(PreparedStatement ps, String login,
+            String password, String role) {
+        boolean flag = false;
+        try {
+            ps.setString(1, login);
+            ps.setString(2, password);
+            ps.setString(3, role);
+            ps.executeUpdate();
+            flag = true;
+        } catch (SQLException ex) {
+            System.err.println("Execute update error from method"
+                    + " DataBaseHandler::insertIntoUsers : " + ex);
+        }
+        return flag;
+        
     }
 }

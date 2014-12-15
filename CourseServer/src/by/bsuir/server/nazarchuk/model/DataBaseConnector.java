@@ -1,4 +1,4 @@
-package courseserver;
+package by.bsuir.server.nazarchuk.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +14,7 @@ public class DataBaseConnector {
         property.put("user", login);
         property.put("password", pass);
         property.put("autoReconnect", "true");
+        property.setProperty("characterEncoding","utf-8");
         return DriverManager.getConnection(url, property);
     }
     

@@ -1,4 +1,4 @@
-package courseserver;
+package by.bsuir.server.nazarchuk.model;
 
 public enum Query {
     ENTЕRY_QUERY("SELECT * FROM users WHERE login=? AND password=?;"),
@@ -13,8 +13,8 @@ public enum Query {
             + "users.id=projectPerformers.userId WHERE projectId=?;"),
     GET_MANAGERS_WITHOUT_USER("SELECT users.id, users.login FROM users WHERE "
             + "login!=? AND role='manager';"),
-    GET_ALL_PERFORMERS("SELECT users.id, users.login, users.role FROM users"
-            + " WHERE role!='manager'"),
+    GET_ALL_PERFORMERS_WITHOUT_ADMIN("SELECT users.id, users.login, users.role FROM users"
+            + " WHERE role!='manager' AND role!='admin'"),
     DELETE_PROJECT_BY_ID("DELETE FROM projects WHERE projects.id=?;"),
     DELETE_PROJECT_PERFORMER_BY_ID("DELETE FROM projectPerformers WHERE "
             + "projectPerformers.projectId=?;"),
@@ -27,7 +27,28 @@ public enum Query {
     INSERT_PROJECT_MANGER("INSERT INTO projectManagers(userId,projectId) "
             + "VALUES (?,?)"),
     INSERT_PROJECT_PERFORMER("INSERT INTO projectPerformers(userId,projectId) "
-            + "VALUES (?,?)");
+            + "VALUES (?,?)"),
+    UPDATE_PROJECT("UPDATE projects SET name=?, startDate=?, endDate=?, "
+            + "percent=? WHERE id=?;"),
+    DROP_ALL_PROJECT_MANAGERS("DELETE FROM projectManagers WHERE "
+            + "projectManagers.projectId=?;"),
+    DROP_ALL_PROJECT_PERFORMERS("DELETE FROM projectPerformers WHERE "
+            + "projectPerformers.projectId=?;"),
+    SELECT_BY_NAME("SELECT projects.id FROM projects WHERE projects.name=?;"),
+    SELECT_BY_START_DATE("SELECT projects.id FROM projects WHERE "
+            + "projects.startDate=?;"),
+    SELECT_BY_END_DATE("SELECT projects.id FROM projects WHERE "
+            + "projects.endDate=?;"),
+    SELECT_BY_MANAGER("SELECT projectManagers.projectId FROM"
+            + " projectManagers WHERE projectManagers.userId=?;"),
+    SELECT_BY_PERFORMER("SELECT projectPerformers.projectId FROM"
+            + " projectPerformers WHERE projectPerformers.userId=?;"),
+    SELECT_ALL_USERS_WITHOUT_ADMIN("SELECT * FROM users WHERE "
+            + "users.role!='admin'"),
+    DELETE_USER_BY_ID("DELETE FROM users WHERE users.id=?;"),
+    INSERT_INTO_USERS("INSERT INTO users(login,password,role) VALUES (?,?,?)");
+    
+    
     private final String value;
     
     private Query(String value) {
