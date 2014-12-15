@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="by.bsuir.client.nazarchuk.controller.AdminController">
+   <children>
+      <TableView fx:id="usersTable" focusTraversable="false" layoutX="8.0" layoutY="8.0" prefHeight="490.0" prefWidth="316.0">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Пользователи">
+              <cellValueFactory>
+                        <PropertyValueFactory property="login" />
+                    </cellValueFactory>
+          </TableColumn>
+            <TableColumn prefWidth="114.0" text="Роль">
+                <cellValueFactory>
+                        <PropertyValueFactory property="role" />
+                    </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+      <TextField fx:id="login" alignment="CENTER" focusTraversable="false" layoutX="328.0" layoutY="98.0" promptText="Логин" />
+      <TextField fx:id="password" alignment="CENTER" focusTraversable="false" layoutX="328.0" layoutY="134.0" promptText="Пароль" />
+      <Button focusTraversable="false" layoutX="372.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#add" text="Добавить" />
+      <Button focusTraversable="false" layoutX="373.0" layoutY="247.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="25.0" prefWidth="84.0" text="Удалить" />
+      <TextField fx:id="role" alignment="CENTER" focusTraversable="false" layoutX="328.0" layoutY="166.0" promptText="Роль" />
+      <Text fx:id="message" fill="RED" layoutX="328.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="171.0" />
+   </children>
+</AnchorPane>

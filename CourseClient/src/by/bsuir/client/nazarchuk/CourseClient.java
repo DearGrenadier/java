@@ -1,8 +1,6 @@
-package courseclient;
+package by.bsuir.client.nazarchuk;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +13,9 @@ public class CourseClient extends Application {
     public void start(Stage stage) {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("entry.fxml"));
+            root = FXMLLoader.load(getClass().getResource("view/fxml/entry.fxml"));
         } catch (IOException ex) {
-            System.err.println("IOException" + ex);
+            System.err.println("IOException : " + ex);
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);
