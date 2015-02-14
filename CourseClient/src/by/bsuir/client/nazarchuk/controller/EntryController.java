@@ -43,7 +43,7 @@ public class EntryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            socket = new Socket(InetAddress.getLocalHost(), 8071);
+            socket = new Socket("127.0.0.1", 8071);
         } catch (IOException ex) {
             System.err.println("Ошибка подключения");
         }

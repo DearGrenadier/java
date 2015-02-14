@@ -194,7 +194,7 @@ public class DesktopController implements Initializable {
         }
         if (startDate.getValue() != null) {
             emptyFlag = false;
-            obj.put("startDate", startDate.getValue().toString());
+            obj.put("startDate",startDate.getValue().toString());
         }
         if (endDate.getValue() != null) {
             emptyFlag = false;
@@ -228,8 +228,10 @@ public class DesktopController implements Initializable {
                             JSONObject ob = (JSONObject) project;
                             int id = Integer.parseInt(ob.get("id").toString());
                             String name = ob.get("name").toString();
-                            String startDate = ob.get("startDate").toString();
-                            String endDate = ob.get("endDate").toString();
+                            String startDate = reverseString(
+                                    ob.get("startDate").toString());
+                            String endDate = reverseString(
+                                    ob.get("endDate").toString());
                             int percent
                                     = Integer.parseInt(ob.get("percent").toString());
                             String managers = "";
