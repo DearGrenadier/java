@@ -10,10 +10,11 @@ public class CourseServer {
     public static void main(String[] args) {
         try {
             ServerSocket server = new ServerSocket(Integer.parseInt(args[0]));
+            System.out.println("Server is started...");
             Socket socket = null;
             while (true) {
                 socket = server.accept();
-                System.out.println(socket.getInetAddress().getHostName()
+                System.out.println(socket.getInetAddress()
 						+ " connected");
                 new ServerThread(socket);
             }

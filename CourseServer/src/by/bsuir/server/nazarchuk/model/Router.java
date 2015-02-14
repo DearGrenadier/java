@@ -248,7 +248,6 @@ public class Router {
                     Query.SELECT_BY_NAME.getValue());
             dataBaseHandler.selectByName(ps, name, tmpArray);
             dataBaseHandler.closeStatement(ps);
-            System.out.println(tmpArray.toString());
             if (!tmpArray.isEmpty()) {
                 if (resArray.isEmpty()) {
                     resArray = tmpArray;
@@ -335,7 +334,6 @@ public class Router {
             JSONArray managers = new JSONArray();
             JSONArray performers = new JSONArray();
             JSONObject project = new JSONObject();
-
             ps = dataBaseHandler.getPreparedStatement(
                     Query.GET_MANAGERS_FROM_ID.getValue());
             dataBaseHandler.getManagers(ps, i, managers);
